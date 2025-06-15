@@ -65,12 +65,13 @@ if __name__ == '__main__':
     tokenizer = BPETokenizer.load("tokenizer/WMTTokenizer_v1")
     print('Vocab_length, ', len(tokenizer.vocab))
     print('loading WMT dataset')
-    train_dataset = WMTDataset('train[:10_000]')
-    print(tokenizer.special_tokens)
-    print(
-        tokenizer.bos_token_id, 
-        tokenizer.eos_token_id,
-        tokenizer.unk_token_id,
+    train_dataset = WMTDataset(
+        split='train[:100_000]', 
+        min_length=256,      
+        max_length=512,     
+        max_length_ratio=2.5, 
+        remove_duplicates=True,
+        normalize_unicode=True
     )
     train_dataloader = DataLoader(train_dataset, batch_size=64, collate_fn= lambda batch: collate_fn(batch, tokenizer, max_seq_len=128), drop_last=True, num_workers=4)
     print('initalizing transformer model')

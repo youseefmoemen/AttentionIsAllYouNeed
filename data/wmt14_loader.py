@@ -221,9 +221,9 @@ if __name__ == "__main__":
     # Load dataset with custom parameters
     dataset = WMTDataset(
         split='train[:100_000]', 
-        min_length=256,      # Minimum 10 characters
-        max_length=512,     # Maximum 400 characters  
-        max_length_ratio=2.5,  # Max 2.5x length difference
+        min_length=256,     
+        max_length=512,     
+        max_length_ratio=2.5,  
         remove_duplicates=True,
         normalize_unicode=True
     )
