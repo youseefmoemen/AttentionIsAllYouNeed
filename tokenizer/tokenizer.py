@@ -20,7 +20,7 @@ class BPETokenizer():
     def __init__(self, dataset=None, max_seq_len = 128,  min_freq = 2, vocab_size = 37000):
         self.dataset = dataset
         self.vocab_size = vocab_size
-        self.vocab = {}
+        self.vocab = {} 
         self.min_freq = min_freq
         self.max_seq_len = max_seq_len
         self.bos_token_id = None
@@ -236,7 +236,7 @@ if __name__ == '__main__':
     )
     tokenizer = BPETokenizer(dataset, min_freq=2, vocab_size=10_000)
     tokenizer.build()
-        tokenizer.save('WMTTokenizer_v1')
+    tokenizer.save('WMTTokenizer_v1')
     print(f"Vocabulary size: {len(tokenizer.vocab)}")
 
 
